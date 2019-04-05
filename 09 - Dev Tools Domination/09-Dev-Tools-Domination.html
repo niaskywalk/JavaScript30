@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 9 - Console Tricks! | #JavaScript30</title>
+  <style>
+    user {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    user h1.userGithub {
+      color: indigo;
+    }
+    user img.avatarGithub {
+      width: 100px;
+
+    }
+    code {
+      white-space: pre;
+    }
+    figure {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    figure img {
+      width: 100%;
+    }
+  </style>
+
+</head>
+<body>
+
+  <user></user>
+  
+
+  <p>Click the BreakxDown!</p>
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <p>See the Results of Console Tricks below! (ctrl-shift-j for DevTools)</p>
+
+  <code>
+      // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log('Hello, I am a %s string','lazy');
+
+
+    // Styled
+    console.log('%cThis is styled', 'color: red; font-weight: bold; font-size: 15px;');
+
+    // warning!
+    console.warn('%cOh No! If you see this, something may be about to go crazy', 'font-size: 20px;');
+
+    // Error :
+    console.error('%cCrap on a cracker... What did you do??!', 'font-size: 22px; font-style: italic; font-weight: bold;');
+
+    // Info
+    console.info('%cSeeing this indicates the code is running correctly','color: mediumblue;');
+
+    // Testing
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+
+    // clearing
+    // console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');    
+    console.count('Victoria');    
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+
+    // timing
+    console.time('Fetching data...');
+  </code>
+  <figure><img src="img/JS30-Day09-01.png" alt="#"></figure>
+
+  <script>
+  "use strict";
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const user = document.querySelector('user');
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log('Hello, I am a %s string','lazy');
+
+
+    // Styled
+    console.log('%cThis is styled', 'color: red; font-weight: bold; font-size: 15px;');
+
+    // warning!
+    console.warn('%cOh No! If you see this, something may be about to go crazy', 'font-size: 20px;');
+
+    // Error :
+    console.error('%cCrap on a cracker... What did you do??!', 'font-size: 22px; font-style: italic; font-weight: bold;');
+
+    // Info
+    console.info('%cSeeing this indicates the code is running correctly','color: mediumblue;');
+
+    // Testing
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+
+    // clearing
+    // console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Victoria');
+    console.count('Drew');    
+    console.count('Victoria');    
+    console.count('Drew');
+    console.count('Victoria');
+    console.count('Drew');
+    console.count('Victoria');
+
+    // timing
+    console.time('Fetching data...');
+    fetch('https://api.github.com/users/niaskywalk')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('Fetching data...');
+      user.innerHTML=`
+        <h1 class="userGithub">${data.login}</h1>
+        <img class="avatarGithub" src="${data.avatar_url}">
+        `;
+    });
+
+
+  </script>
+</body>
+</html>

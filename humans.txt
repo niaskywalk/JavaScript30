@@ -1,0 +1,25 @@
+/* TEAM */
+
+Student/SiteManager: Victoria Kariolic
+Site: http://www.niaskywalk.com
+JS30 Site: http://dev.niaskywalk.com/javascript30
+
+							
+/* THANKS */
+
+							
+Instructor: Wes Bos
+Site: http://www.wesbos.com
+Site: http://www.javascript30.com
+                        
+
+                   
+/* SITE */
+
+First Update: 2017/01/30                      
+Last update: 2017/01/30 
+
+                            
+Standards: HTML5, CSS3, JavaScript(ES6);
+
+Software: Sublime Text 3 (JSHint Gutter, Theme: Cobalt2(WesBos), font: Operator Mono/Insolata)

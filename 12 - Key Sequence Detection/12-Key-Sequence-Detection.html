@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 12 - Key Detection | #JavaScript30</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<p>Type 'victoria'.</p>
+<p>Use the KONAMI code.</p>
+<p>Ok, the code is: Up, Up, Down, Down, Left, Right, Left, Right, B, A</p>
+<p>['Happy','Sparkly','Glittery','Fun','Magical','Lovely','Cute','Charming','Amazing','Wonderful'];</p>
+<a href="http://www.cornify.com" target="_blank"><img src="http://www.cornify.com/assets/cornifycorn.gif" width="52" height="51" border="0" alt="Cornify" id="cornify__logo" /></a>
+
+<script>
+	"use strict";
+	const pressed = [];
+	const secretCode = 'victoria';
+	const secretCodeLength = 8; // To account for .push() entries with multi-digit codes
+	const cornifyLogo = document.querySelector('#cornify__logo');
+
+
+	window.addEventListener('keyup', (e) => {
+		pressed.push(e.key);
+		console.log(pressed);
+		pressed.splice(-secretCodeLength - 1, pressed.length - secretCodeLength);
+		if (pressed.join('').includes(secretCode)) {
+			console.log("SUCCESS!!");
+			cornify_add();
+			return false;
+		}
+		
+	});
+
+	cornifyLogo.addEventListener('click', ()=>{
+		cornify_add();
+		return false;
+	});
+</script>
+</body>
+</html>

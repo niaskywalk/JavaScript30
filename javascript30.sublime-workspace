@@ -1,0 +1,412 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tra",
+				"transition-delay"
+			],
+			[
+				"peson",
+				"person"
+			],
+			[
+				"transla",
+				"translateY()"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"direct",
+				"flex-direction"
+			],
+			[
+				"hours",
+				"hoursDegrees"
+			],
+			[
+				"hour",
+				"hour-hand"
+			],
+			[
+				"min",
+				"min-hand"
+			],
+			[
+				"transition",
+				"transition-duration"
+			],
+			[
+				"ease",
+				"ease-in-out"
+			],
+			[
+				"tranform",
+				"transform-origin"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"backg",
+				"background-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "var cornify_count = 0;\nvar cornify_add = function() {\n\tcornify_count += 1;\n\tvar cornify_url = 'https://www.cornify.com/';\n\tvar div = document.createElement('div');\n\tdiv.style.position = 'fixed';\n\n\t// document.title = '&#10024; &#129412; &#10024;';\n\t\n\tvar numType = 'px';\n\tvar heightRandom = Math.random()*.75;\n\tvar windowHeight = 768;\n\tvar windowWidth = 1024;\n\tvar height = 0;\n\tvar width = 0;\n\tvar de = document.documentElement;\n\tif (typeof(window.innerHeight) == 'number') {\n\t\twindowHeight = window.innerHeight;\n\t\twindowWidth = window.innerWidth;\n\t} else if(de && de.clientHeight) {\n\t\twindowHeight = de.clientHeight;\n\t\twindowWidth = de.clientWidth;\n\t} else {\n\t\tnumType = '%';\n\t\theight = Math.round( height*100 )+'%';\n\t}\n\t\n\tdiv.onclick = cornify_add;\n\tdiv.style.zIndex = 10;\n\tdiv.style.outline = 0;\n\t\n\tif( cornify_count==15 ) {\n\t\tdiv.style.top = Math.max( 0, Math.round( (windowHeight-530)/2 ) )  + 'px';\n\t\tdiv.style.left = Math.round( (windowWidth-530)/2 ) + 'px';\n\t\tdiv.style.zIndex = 1000;\n\t} else {\n\t\tif( numType=='px' ) div.style.top = Math.round( windowHeight*heightRandom ) + numType;\n\t\telse div.style.top = height;\n\t\tdiv.style.left = Math.round( Math.random()*90 ) + '%';\n\t}\n\t\n\tvar img = document.createElement('img');\n\tvar currentTime = new Date();\n\tvar submitTime = currentTime.getTime();\n\tif( cornify_count==15 ) submitTime = 0;\n\timg.setAttribute('src',cornify_url+'getacorn.php?r=' + submitTime + '&url='+document.location.href);\n\tvar ease = \"all .1s linear\";\n\t//div.style['-webkit-transition'] = ease;\n\t//div.style.webkitTransition = ease;\n\tdiv.style.WebkitTransition = ease;\n\tdiv.style.WebkitTransform = \"rotate(1deg) scale(1.01,1.01)\";\n\t//div.style.MozTransition = \"all .1s linear\";\n\tdiv.style.transition = \"all .1s linear\";\n\tdiv.onmouseover = function() {\n\t\tvar size = 1+Math.round(Math.random()*10)/100;\n\t\tvar angle = Math.round(Math.random()*20-10);\n\t\tvar result = \"rotate(\"+angle+\"deg) scale(\"+size+\",\"+size+\")\";\n\t\tthis.style.transform = result;\n\t\t//this.style['-webkit-transform'] = result;\n\t\t//this.style.webkitTransform = result;\n\t\tthis.style.WebkitTransform = result;\n\t\t//this.style.MozTransform = result;\n\t\t//alert(this + ' | ' + result);\n\t};\n\tdiv.onmouseout = function() {\n\t\tvar size = .9+Math.round(Math.random()*10)/100;\n\t\tvar angle = Math.round(Math.random()*6-3);\n\t\tvar result = \"rotate(\"+angle+\"deg) scale(\"+size+\",\"+size+\")\";\n\t\tthis.style.transform = result;\t\n\t\t//this.style['-webkit-transform'] = result;\n\t\t//this.style.webkitTransform = result;\n\t\tthis.style.WebkitTransform = result;\n\t\t//this.style.MozTransform = result;\n\t};\n\tvar body = document.getElementsByTagName('body')[0];\n\tbody.appendChild(div);\n\tdiv.appendChild(img);\t\n\t\n\t// Add stylesheet.\n\tif (cornify_count == 5) {\n\t\tvar cssExisting = document.getElementById('__cornify_css');\n\t\tif (!cssExisting) {\n\t\t\tvar head = document.getElementsByTagName(\"head\")[0];\n\t\t\tvar css = document.createElement('link');\n\t\t\tcss.id = '__cornify_css';\n\t\t\tcss.type = 'text/css';\n\t\t\tcss.rel = 'stylesheet';\n\t\t\tcss.href = 'https://www.cornify.com/css/cornify.css';\n\t\t\tcss.media = 'screen';\n\t\t\thead.appendChild(css);\n\t\t}\n\t\tcornify_replace();\n\t}\t\n\t\n\tcornify_updatecount();\n};\n\nvar cornify_updatecount = function() {\n\tvar p = document.getElementById('cornifycount');\n\tif(p == null) {\n\t\tvar p = document.createElement('p');\n\t\tp.id = 'cornifycount';\n\t\tp.style.position = 'fixed';\n\t\tp.style.bottom = '5px';\n\t\tp.style.left = '0px';\n\t\tp.style.right = '0px';\n\t\tp.style.zIndex = '1000000000';\n\t\tp.style.color = '#ff00ff';\n\t\tp.style.textAlign = 'center';\n\t\tp.style.fontSize = '24px';\n\t\tp.style.fontFamily = \"'Comic Sans MS', 'Comic Sans', 'Marker Felt', serif\";\n\t\tvar body = document.getElementsByTagName('body')[0];\n\t\tbody.appendChild(p);\n\t}\n\tif(cornify_count == 1) {\n\t\tp.innerHTML = cornify_count+' UNICORN OR RAINBOW CREATED';\n\t} else {\n\t\tp.innerHTML = cornify_count+' UNICORNS &AMP; RAINBOWS CREATED';\n\t}\n\tcornify_setcookie('cornify', cornify_count+'', 1000);\n};\n\nvar cornify_setcookie = function(name, value, days) {\n\tvar d = new Date();\n\td.setTime(d.getTime()+(days*24*60*60*1000));\n\tvar expires = \"expires=\"+d.toGMTString();\n\tdocument.cookie = name + \"=\" + value + \"; \" + expires;\n};\n\nvar cornify_getcookie = function(cname) {\n\tvar name = cname + \"=\";\n\tvar ca = document.cookie.split(';');\n\tfor(var i=0; i<ca.length; i++) {\n\t\tvar c = ca[i].trim();\n\t\tif(c.indexOf(name)==0) {\n\t\t\treturn c.substring(name.length,c.length);\n\t\t}\n\t}\n\treturn \"\";\n};\n\ncornify_count = parseInt(cornify_getcookie('cornify'));\nif(isNaN(cornify_count)) {\n\tcornify_count = 0;\n}\n\nvar cornify_replace = function() {\n\t// Replace text.\n\tvar hc = 6;\n\tvar hs;\n\tvar h;\n\tvar k;\n\tvar words = ['Happy','Sparkly','Glittery','Fun','Magical','Lovely','Cute','Charming','Amazing','Wonderful'];\n\twhile(hc >= 1) {\n\t\ths = document.getElementsByTagName('h' + hc);\n\t\tfor (k = 0; k < hs.length; k++) {\n\t\t\th = hs[k];\n\t\t\th.innerHTML = words[Math.floor(Math.random()*words.length)] + ' ' + h.innerHTML;\n\t\t}\n\t\thc-=1;\n\t}\n};\n\n/*\n * Adapted from http://www.snaptortoise.com/konami-js/\n */\nvar cornami = {\n\tinput:\"\",\n\tpattern:\"38384040373937396665\",\n\tclear:setTimeout('cornami.clear_input()',5000),\n\tload: function() {\n\t\twindow.document.onkeydown = function(e) {\n\t\t\tif (cornami.input == cornami.pattern) {\n\t\t\t\tcornify_add();\n\t\t\t\tclearTimeout(cornami.clear);\n\t\t\t\treturn;\n\t\t\t}\n\t\t\telse {\n\t\t\t\tcornami.input += e ? e.keyCode : event.keyCode;\n\t\t\t\tif (cornami.input == cornami.pattern) cornify_add();\n\t\t\t\tclearTimeout(cornami.clear);\n\t\t\t\tcornami.clear = setTimeout(\"cornami.clear_input()\", 5000);\n\t\t\t}\n\t\t};\n\t},\n\tclear_input: function() {\n\t\tcornami.input=\"\";\n\t\tclearTimeout(cornami.clear);\n\t}\n};\ncornami.load();",
+			"settings":
+			{
+				"buffer_size": 5610,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remove packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/vkario/websites/personal/js30",
+		"/home/vkario/websites/personal/js30/06 - Type Ahead",
+		"/home/vkario/websites/personal/js30/13 - Slide in on Scroll",
+		"/home/vkario/websites/personal/js30/14 - JavaScript References VS Copying",
+		"/home/vkario/websites/personal/js30/23 - Speech Synthesis"
+	],
+	"file_history":
+	[
+		"/home/vkario/.zshrc",
+		"/home/vkario/websites/personal/js30/13 - Slide in on Scroll/13-Slide-in-on-Scroll.html",
+		"/home/vkario/websites/personal/FCCNYC/index.html",
+		"/home/vkario/websites/personal/js30/06 - Type Ahead/06-Type-Ahead.html",
+		"/home/vkario/websites/personal/practice/style.css",
+		"/home/vkario/websites/personal/practice/emmit-fenn-animated-content.html",
+		"/home/vkario/websites/client/grinberg-yelena/source/Page php",
+		"/tmp/fz3temp-1/.htaccess",
+		"/tmp/mozilla_vkario0/Page php",
+		"/tmp/fz3temp-1/websitescan.txt",
+		"/tmp/fz3temp-1/theme-install_old.php",
+		"/tmp/fz3temp-1/dashboard_indesit.php",
+		"/tmp/fz3temp-1/popup-functions_old.php",
+		"/tmp/fz3temp-1/widgets_infoold.php",
+		"/tmp/fz3temp-1/functions.php",
+		"/tmp/fz3temp-1/footer.php",
+		"/tmp/fz3temp-1/header.php",
+		"/tmp/fz3temp-1/header_prevv1.php",
+		"/tmp/fz3temp-1/0d1b53299b109272764127503f188be1",
+		"/tmp/fz3temp-1/index.php",
+		"/tmp/fz3temp-1/index_prevv1.php",
+		"/tmp/fz3temp-1/zToyEoULJkk3cra5VYTmtsjBHAc.html",
+		"/tmp/fz3temp-1/z_ssv3_payload_extractor5AWXmdrGoJ.php",
+		"/home/vkario/Documents/3D/AA_Tower_Corner_Hollow_Modular_Castle_Playset_-_3D-printable_By_CreativeTools.gcode",
+		"/home/vkario/websites/personal/js30/12 - Key Sequence Detection/12-Key-Sequence-Detection.html",
+		"/tmp/fz3temp-1/index.html",
+		"/tmp/fz3temp-1/11-Custom-Video-Player.html",
+		"/home/vkario/websites/personal/js30/11 - Custom Video Player/video-scripts.js",
+		"/home/vkario/websites/personal/js30/11 - Custom Video Player/11-Custom-Video-Player.html",
+		"/home/vkario/websites/personal/js30/11 - Custom Video Player/scripts-ori.js",
+		"/home/vkario/websites/personal/js30/11 - Custom Video Player/style-ori.css",
+		"/home/vkario/websites/personal/js30/10 - Hold Shift and Check Checkboxes/10-Multiple-Checkboxes.html",
+		"/home/vkario/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/home/vkario/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/home/vkario/websites/personal/js30/09 - Dev Tools Domination/09-Dev-Tools-Domination.html",
+		"/home/vkario/websites/personal/js30/08 - Fun with HTML5 Canvas/08-HTML5-Canvas.html",
+		"/home/vkario/websites/personal/js30/07 - Array Cardio Day 2/07-Array-Cardio-2.html",
+		"/home/vkario/websites/personal/js30/index.html",
+		"/tmp/fz3temp-1/01-Drum-Kit.html",
+		"/home/vkario/websites/personal/js30/06 - Type Ahead/index.html",
+		"/home/vkario/websites/personal/js30/04 - Array Cardio Day 1/index.html",
+		"/home/vkario/websites/personal/js30/05 - Flex Panel Gallery/index.html",
+		"/home/vkario/websites/personal/js30/03 - CSS Variables/index.html",
+		"/home/vkario/websites/personal/js30/03 - CSS Variables/index-START.html",
+		"/home/vkario/websites/personal/js30/01 - JavaScript Drum Kit/index.html",
+		"/tmp/fz3temp-1/drumkit-style.css",
+		"/home/vkario/websites/personal/js30/humans.txt",
+		"/home/vkario/.config/sublime-text-3/Packages/JSHint Gutter/.jshintrc",
+		"/home/vkario/.config/sublime-text-3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/home/vkario/websites/personal/js30/01 - JavaScript Drum Kit/.jshintrc",
+		"/home/vkario/websites/personal/js30/01 - JavaScript Drum Kit/sounds/boom.wav",
+		"/home/vkario/websites/personal/js30/01 - JavaScript Drum Kit/indexhtml",
+		"/home/vkario/websites/personal/pinkcord/public/js/articles.js",
+		"/home/vkario/websites/personal/pinkcord/views/posts/new-post.ejs",
+		"/home/vkario/websites/personal/pinkcord/public/js/app.js",
+		"/home/vkario/websites/personal/pinkcord/routes/posts.js",
+		"/home/vkario/websites/personal/pinkcord/server.js",
+		"/home/vkario/websites/personal/pinkcord/db.js",
+		"/home/vkario/websites/personal/pinkcord/routes/index.js",
+		"/home/vkario/websites/personal/pinkcord/models/post.js",
+		"/home/vkario/websites/personal/pinkcord/models/index.js",
+		"/home/vkario/websites/personal/pinkcord/gulpfile.js",
+		"/home/vkario/websites/personal/pinkcord/public/scss/style.scss",
+		"/home/vkario/websites/personal/pinkcord/views/index.ejs",
+		"/home/vkario/websites/personal/pinkcord/.gitignore",
+		"/home/vkario/websites/personal/pinkcord/public/index.html",
+		"/home/vkario/websites/personal/pinkcord/views/layouts/main.ejs",
+		"/home/vkario/websites/personal/pinkcord/views/404.ejs",
+		"/home/vkario/websites/personal/pinkcord/views/500-dev.ejs",
+		"/home/vkario/websites/personal/pinkcord/views/500.ejs",
+		"/usr/share/applications/screensavers/timetunnel.desktop",
+		"/home/vkario/websites/personal/pinkcord/public/css/style.css",
+		"/home/vkario/websites/personal/pinkcord/public/scss/layout.scss",
+		"/home/vkario/websites/personal/pinkcord/public/js/dumb.js",
+		"/home/vkario/websites/personal/pinkcord/public/style.css",
+		"/tmp/fz3temp-1/my-functions.php",
+		"/tmp/fz3temp-1/php.ini-example",
+		"/home/vkario/websites/client/nagy-adam/custom-functions.php",
+		"/home/vkario/.cache/.fr-DEgw9I/css/normalize.css",
+		"/home/vkario/.cache/.fr-sq02qZ/css/style.css",
+		"/home/vkario/.cache/.fr-RwowRG/index.html",
+		"/home/vkario/websites/Personal/gobbellNode/home.js",
+		"/home/vkario/websites/Personal/gobbellNode/package.json",
+		"/home/vkario/websites/Personal/nodedemo/package.json",
+		"/home/vkario/websites/Personal/nodedemo/mymod.js",
+		"/home/vkario/websites/Client/41Madison/2016Sept/item/pg.css",
+		"/home/vkario/websites/Client/41Madison/2016Sept/Table41-Spotlight.html",
+		"/home/vkario/websites/Client/41Madison/2016Sept/Files/index.html",
+		"/home/vkario/test",
+		"/home/vkario/websites/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\n}",
+			"\n    ",
+			"> <",
+			">\n    <",
+			">\n<",
+			"Day04",
+			"      border: 1px solid red;",
+			"    .panel > *:first-child {\n      transform: translateY(-100%);\n    }",
+			"src=\"#\"",
+			"<br>",
+			"  </code>\n  <code>",
+			"secondHand.style.transition = \"unset\";",
+			"no_bold",
+			"src=\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"><",
+			"Day07",
+			"src=\"img/JS30-Day04-{}.png\"",
+			"",
+			"  </code>\n<figure><img src=\"#\" alt=\"#\"></figure>\n  <code>",
+			"src=\"http://41madison.com/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								408,
+								408
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/home/vkario/websites/personal/js30",
+							"git_gutter_is_enabled": false,
+							"git_savvy.repo_path": "/home/vkario/websites/personal/js30",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "javascript30.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/websites/personal/kittycastles/kittycastles.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 278.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
