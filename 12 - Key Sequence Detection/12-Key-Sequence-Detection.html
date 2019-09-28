@@ -2,21 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Day 12 - Key Detection | #JavaScript30</title>
-  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <title>Day 12 - Key Detection | #JavaScript30 Challenge | Indigo Grove Development (NSCR)</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
+	<h1>Key Detection Fun!</h1>
+	<h2>Add a ton of wonder!</h2>
+	<h3></h3>
+	<h4></h4>
+	<h5></h5>
+	<h6></h6>
 <p>Type 'victoria'.</p>
 <p>Use the KONAMI code.</p>
 <p>Ok, the code is: Up, Up, Down, Down, Left, Right, Left, Right, B, A</p>
 <p>['Happy','Sparkly','Glittery','Fun','Magical','Lovely','Cute','Charming','Amazing','Wonderful'];</p>
-<a href="http://www.cornify.com" target="_blank"><img src="http://www.cornify.com/assets/cornifycorn.gif" width="52" height="51" border="0" alt="Cornify" id="cornify__logo" /></a>
+<a href="https://www.cornify.com" target="_blank"><img src="https://www.cornify.com/assets/cornifycorn.gif" width="52" height="51" border="0" alt="Cornify" id="cornify__logo" /></a>
 
 <script>
 	"use strict";
+	var cornify_count = 0;
 	const pressed = [];
 	const secretCode = 'victoria';
-	const secretCodeLength = 8; // To account for .push() entries with multi-digit codes
+	const secretCodeArray = ['victoria','kario', 'niaskywalk','happy','sparkly','glittery','fun','magical','lovely','cute','charming','amazing','wonderful','HShiftappy','SShiftparkly','GShiftlittery','FShiftun','MShiftagical','LShiftovely','CShiftute','CShiftharming','AShiftmazing','WShiftonderful'];
+	const secretCodeLength = 10; // To account for .push() entries with multi-digit codes
 	const cornifyLogo = document.querySelector('#cornify__logo');
 
 
@@ -24,13 +32,22 @@
 		pressed.push(e.key);
 		console.log(pressed);
 		pressed.splice(-secretCodeLength - 1, pressed.length - secretCodeLength);
-		if (pressed.join('').includes(secretCode)) {
-			console.log("SUCCESS!!");
-			cornify_add();
-			return false;
+		// if (pressed.join('').includes(secretCode)) {
+		// 	console.log("SUCCESS!!");
+		// 	cornify_add();
+		// 	return false;
+		// }
+		for (var i = 0; i <= secretCodeArray.length; i++) {
+			if (pressed.join('').includes(secretCodeArray[i])){
+				console.log("SUCCESS!!");
+				cornify_add();
+				return false;
+			}
 		}
 		
 	});
+
+
 
 	cornifyLogo.addEventListener('click', ()=>{
 		cornify_add();
